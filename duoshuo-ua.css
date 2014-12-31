@@ -1,0 +1,4 @@
+#ds-reset .ds-os,#ds-reset .ds-browser,#ds-reset .ds-webmaster{display:inline-block;border-radius:.3em;margin-left:.5em;padding:.3em;}
+#ds-reset .ds-os{color:white;background:dodgerblue;}
+#ds-reset .ds-browser{color:yellow;background:green;}
+#ds-reset .ds-webmaster{border:1px solid red;color:red;}
