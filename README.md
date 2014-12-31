@@ -22,10 +22,21 @@ duoshuoQuery.ondomready=function(){
 
 下面是一个比较完整的例子：
 ``` HTML
+<html>
+<head>
+<link rel=stylesheet type=text/css href=duoshuo-ua.css />
 <script>var duoshuoQuery={short_name:'test'};</script>
 <!-- 下面的脚本加载顺序可以交换 -->
 <script src=duoshuo-ua.js></script>
 <script src=http://static.duoshuo.com/embed.js></script>
 <!-- 加载duoshuo-ua.js后才能设置ondomready -->
 <script>duoshuoQuery.ondomready=duoshuoQuery.pluginUA(my_duoshuo_id);</script>
+...
+</head>
+<body>
+...
+</body>
+</html>
 ```
+
+效果可参见：<http://geraldl.net/about>
