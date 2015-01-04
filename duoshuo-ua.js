@@ -6,20 +6,24 @@ duoshuoQuery.pluginUA=function(duoshuo_id){
 		var r={os:'山寨系统',br:'山寨浏览器',src:a},m;
 		// 系统
 		// Windows
-		if(m=a.match(/Windows NT ?([^; )]*)/i)) {
-			if(m[1]<5) r.os=m[0];
-			else {
-				r.os='Windows ';
-				if(m[1]=='5.0') r.os+='2000';
-				else if(m[1]=='5.1'||m[1]=='5.2') r.os+='XP';
-				else if(m[1]=='6.0') r.os+='Vista';
-				else if(m[1]=='6.1') r.os+='7';
-				else if(m[1]=='6.2') r.os+='8';
-				else if(m[1]=='6.3') r.os+='8.1';
-				else if(m[1]=='10.0') r.os+='10';
-				else r.os+'山寨版';
-			}
-		} else if(m=a.match(/Windows Phone OS ?([^; )]*)/i)) r.os=m[0];
+		if(m=a.match(/Windows ?([^;)]*)/i)) {
+			r.os='Windows';
+			m[1]={
+				'4.90':'ME',
+				'NT3.51':'NT 3.11',
+				'NT4.0':'NT 4.0',
+				'NT 5.0':'2000',
+				'NT 5.1':'XP',
+				'NT 5.2':'XP',
+				'NT 6.0':'Vista',
+				'NT 6.1':'7',
+				'NT 6.2':'8',
+				'NT 6.3':'8.1',
+				'NT 6.4':'10',
+				'ARM':'RT',
+			}[m[1]];
+			r.os+=m[1]?' '+m[1]:'山寨版';
+		} else if(m=a.match(/Windows Phone(?: OS)? ?([^; )]*)/i)) r.os=m[0];
 		// Mac OS
 		else if(m=a.match(/iPhone|iPod|iPad/i)) r.os=m[0];
 		else if(m=a.match(/Mac OS X/i)) r.os=m[0];
@@ -37,7 +41,7 @@ duoshuoQuery.pluginUA=function(duoshuo_id){
 		// Chrome
 		else if(m=a.match(/Chrome\/(\S+)/i)) r.br='Chrome '+m[1];
 		// Safari
-		else if(m=a.match(/Safari\/(\S+)/i)) r.br='Safari '+m[1];
+		else if(m=a.match(/Version\/(\S+) .*?Safari\//i)) r.br='Safari '+m[1];
 		// Firefox
 		else if(m=a.match(/Firefox\/(\S+)/i)) r.br='Firefox '+m[1];
 		// IE

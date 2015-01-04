@@ -40,3 +40,5 @@ duoshuoQuery.ondomready=function(){
 ```
 
 效果可参见：<http://geraldl.net/about>
+
+如果要求更高一点可以使用<https://github.com/faisalman/ua-parser-js>来进行UA解析。
