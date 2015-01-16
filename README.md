@@ -14,13 +14,12 @@ duoshuoQuery中可以定义`myId`和`getUAString`函数：
 ``` HTML
 <html>
 <head>
-<link rel=stylesheet type=text/css href=duoshuo-ua.css />
 
 <!-- 第1部分：必须写在后2部分的前面 -->
 <script>var duoshuoQuery={short_name:'test',myId:1234567};</script>
 
-<!-- 第2部分：加载duoshuo-ua.js -->
-<script src=duoshuo-ua.js></script>
+<!-- 第2部分：加载duoshuo-ua.min.js -->
+<script src=dist/duoshuo-ua.min.js></script>
 
 <!-- 第3部分：也可写成异步加载，请写在第2部分后面 -->
 <script src=http://static.duoshuo.com/embed.js></script>
@@ -32,6 +31,8 @@ duoshuoQuery中可以定义`myId`和`getUAString`函数：
 </body>
 </html>
 ```
+
+注：dist/duoshuo-ua.min.js是压缩后的代码，集成了CSS，无需单独加载CSS文件，如需自定义，请使用未压缩版本。
 
 效果可参见：<http://geraldl.net/about>
 

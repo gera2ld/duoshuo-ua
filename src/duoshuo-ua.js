@@ -95,6 +95,12 @@
 		r=getRule(a,rules_br);if(r[0]) {result.br=r[0];result.br_cls=r[1];}
 		return result;
 	}
+	function getUAString(local){
+		var a=local.agent;
+		return '<div class="ds-os ds-os-'+a.os_cls+'">'+a.os+'</div>'+
+			'<div class="ds-br ds-br-'+a.br_cls+'">'+a.br+'</div>'+
+			(local.webmaster?'<div class=ds-webmaster>天下第一帅的站长</div>':'');
+	}
 	function callBefore(local,args){
 		var e=args[0];
 		if(args.length==1)	// embed.unstable.js
@@ -105,17 +111,11 @@
 	function callAfter(local,args){
 		var r=local.result,a=local.agent,
 				i=r.indexOf('<div class="ds-comment-header">'),
-				j=r.indexOf('</div>',i);
-		local.result=r.slice(0,j)+getUAString(local)+r.slice(j);
+				j=r.indexOf('</div>',i),
+				func=duoshuoQuery.getUAString||getUAString;
+		local.result=r.slice(0,j)+func(local)+r.slice(j);
 	}
-	var getUAString=duoshuoQuery.getUAString||function(local){
-		var a=local.agent;
-		return '<div class="ds-os ds-os-'+a.os_cls+'">'+a.os+'</div>'+
-			'<div class="ds-br ds-br-'+a.br_cls+'">'+a.br+'</div>'+
-			(local.webmaster?'<div class=ds-webmaster>天下第一帅的站长</div>':'');
-	},ondomready=duoshuoQuery.ondomready;
-	duoshuoQuery.ondomready=function(){
-		if(ondomready) ondomready();
+	function init(){
 		var post=DUOSHUO.templates.post;
 		DUOSHUO.templates.post=function(){
 			var local={},args=arguments;
@@ -124,5 +124,10 @@
 			callAfter.call(this,local,args);
 			return local.result;
 		}
+	}
+	var ondomready=duoshuoQuery.ondomready;
+	duoshuoQuery.ondomready=function(){
+		if(ondomready) ondomready();
+		init();
 	};
 }();
