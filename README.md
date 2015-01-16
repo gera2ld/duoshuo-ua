@@ -25,12 +25,17 @@ duoshuoQuery.ondomready=function(){
 <html>
 <head>
 <link rel=stylesheet type=text/css href=duoshuo-ua.css />
+
+<!-- 第1部分：必须写在后2部分的前面 -->
 <script>var duoshuoQuery={short_name:'test'};</script>
-<!-- 下面的脚本加载顺序可以交换 -->
+
+<!-- 第2部分：加载duoshuo-ua.js后才能设置ondomready -->
 <script src=duoshuo-ua.js></script>
-<script src=http://static.duoshuo.com/embed.js></script>
-<!-- 加载duoshuo-ua.js后才能设置ondomready -->
 <script>duoshuoQuery.ondomready=duoshuoQuery.pluginUA(my_duoshuo_id);</script>
+
+<!-- 第3部分：可以和第2部分交换，也可以写成异步加载，但是必须写在第1部分后面 -->
+<script src=http://static.duoshuo.com/embed.js></script>
+
 ...
 </head>
 <body>

@@ -95,11 +95,14 @@ duoshuoQuery.pluginUA=function(duoshuo_id, getUAString){
 		r=getRule(a,rules_br);if(r[0]) {result.br=r[0];result.br_cls=r[1];}
 		return result;
 	}
-	function callBefore(local,e){
-		local.agent=parseAgent(e.post.agent);
-		local.webmaster=e.post.author_id==duoshuo_id;
+	function callBefore(local,args){
+		var e=args[0];
+		if(args.length==1)	// embed.unstable.js
+			e=e.post;
+		local.agent=parseAgent(e.agent);
+		local.webmaster=e.author_id==duoshuo_id;
 	}
-	function callAfter(local,e){
+	function callAfter(local,args){
 		var r=local.result,a=local.agent,
 				i=r.indexOf('<div class="ds-comment-header">'),
 				j=r.indexOf('</div>',i);
@@ -113,11 +116,11 @@ duoshuoQuery.pluginUA=function(duoshuo_id, getUAString){
 	};
 	return function(){
 		var post=DUOSHUO.templates.post;
-		DUOSHUO.templates.post=function(e){
-			var local={};
-			callBefore.call(this,local,e);
-			local.result=post.call(this,e);
-			callAfter.call(this,local,e);
+		DUOSHUO.templates.post=function(){
+			var local={},args=arguments;
+			callBefore.call(this,local,args);
+			local.result=post.apply(this,args);
+			callAfter.call(this,local,args);
 			return local.result;
 		}
 	};
