@@ -7,33 +7,22 @@
 
 使用方法
 ---
-在定义duoshuoQuery后载入duoshuo-ua.js，然后：
-``` javascript
-// 方法1：直接设置ondomready
-duoshuoQuery.ondomready=duoshuoQuery.pluginUA(my_duoshuo_id);
+duoshuoQuery中可以定义`myId`和`getUAString`函数：
+* myId：是站长自己的多说数字id，用于区分站长的回复，并可在`getUAString`中加上不同的标记，如不定义则不会对站长回复进行区分。
+* getUAString：是对每条留言显示内容进行处理的函数，默认将加上操作系统和浏览器的显示。
 
-// 方法2：在ondomready中调用
-duoshuoQuery.ondomready=function(){
-	duoshuoQuery.pluginUA(my_duoshuo_id)();
-	// 做其他事情
-}
-```
-其中`my_duoshuo_id`是站长的多说id，用于标记站长的回复。
-
-下面是一个比较完整的例子：
 ``` HTML
 <html>
 <head>
 <link rel=stylesheet type=text/css href=duoshuo-ua.css />
 
 <!-- 第1部分：必须写在后2部分的前面 -->
-<script>var duoshuoQuery={short_name:'test'};</script>
+<script>var duoshuoQuery={short_name:'test',myId:1234567};</script>
 
-<!-- 第2部分：加载duoshuo-ua.js后才能设置ondomready -->
+<!-- 第2部分：加载duoshuo-ua.js -->
 <script src=duoshuo-ua.js></script>
-<script>duoshuoQuery.ondomready=duoshuoQuery.pluginUA(my_duoshuo_id);</script>
 
-<!-- 第3部分：可以和第2部分交换，也可以写成异步加载，但是必须写在第1部分后面 -->
+<!-- 第3部分：也可写成异步加载，请写在第2部分后面 -->
 <script src=http://static.duoshuo.com/embed.js></script>
 
 ...

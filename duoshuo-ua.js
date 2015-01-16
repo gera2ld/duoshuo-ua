@@ -1,7 +1,7 @@
 /* 多说UserAgent插件
  * 作者：Gerald <gera2ld@163.com>
  */
-duoshuoQuery.pluginUA=function(duoshuo_id, getUAString){
+!function(){
 	function getRule(str,rules){
 		var res=null,cls=null;
 		rules.some(function(rule){
@@ -100,7 +100,7 @@ duoshuoQuery.pluginUA=function(duoshuo_id, getUAString){
 		if(args.length==1)	// embed.unstable.js
 			e=e.post;
 		local.agent=parseAgent(e.agent);
-		local.webmaster=e.author_id==duoshuo_id;
+		local.webmaster=e.author_id==duoshuoQuery.myId;
 	}
 	function callAfter(local,args){
 		var r=local.result,a=local.agent,
@@ -108,13 +108,14 @@ duoshuoQuery.pluginUA=function(duoshuo_id, getUAString){
 				j=r.indexOf('</div>',i);
 		local.result=r.slice(0,j)+getUAString(local)+r.slice(j);
 	}
-	if(!getUAString) getUAString=function(local){
+	var getUAString=duoshuoQuery.getUAString||function(local){
 		var a=local.agent;
 		return '<div class="ds-os ds-os-'+a.os_cls+'">'+a.os+'</div>'+
 			'<div class="ds-br ds-br-'+a.br_cls+'">'+a.br+'</div>'+
 			(local.webmaster?'<div class=ds-webmaster>天下第一帅的站长</div>':'');
-	};
-	return function(){
+	},ondomready=duoshuoQuery.ondomready;
+	duoshuoQuery.ondomready=function(){
+		if(ondomready) ondomready();
 		var post=DUOSHUO.templates.post;
 		DUOSHUO.templates.post=function(){
 			var local={},args=arguments;
@@ -124,4 +125,4 @@ duoshuoQuery.pluginUA=function(duoshuo_id, getUAString){
 			return local.result;
 		}
 	};
-};
+}();
