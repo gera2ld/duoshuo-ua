@@ -87,7 +87,7 @@
 					return 'Internet Explorer '+m[1];
 				}],
 				[/Trident\/(\d+)\.0/i,function(m){
-					return 'Internet Explorer '+(m[1]+4);
+					return 'Internet Explorer '+(parseInt(m[1])+4);
 				}],
 			]],
 		],result={os:'山寨系统',os_cls:'other',br:'山寨浏览器',br_cls:'other'},r;
@@ -102,13 +102,13 @@
 			(local.webmaster?'<div class=ds-webmaster>站长</div>':'');
 	}
 	function callBefore(local,args){
-		var e=args[0],id,myId=duoshuoQuery.myId||[];
+		var e=args[0],id,myIds=duoshuoQuery.myIds||duoshuoQuery.myId||[];
 		if(args.length==1)	// embed.unstable.js
 			e=e.post;
 		local.agent=parseAgent(e.agent);
 		id=e.author_id;
-		if(!myId.indexOf) myId=[myId];
-		local.webmaster=myId.indexOf(id)<0?0:id;
+		if(!myIds.indexOf) myIds=[myIds];
+		local.webmaster=myIds.indexOf(id)<0?0:id;
 	}
 	function callAfter(local,args){
 		var r=local.result,
@@ -126,6 +126,7 @@
 			callAfter.call(this,local,args);
 			return local.result;
 		}
+		DUOSHUO.jQuery('.ds-thread-ua').removeClass('ds-thread-ua').addClass('ds-thread');
 	}
 	var ondomready=duoshuoQuery.ondomready;
 	duoshuoQuery.ondomready=function(){
