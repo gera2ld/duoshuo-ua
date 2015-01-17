@@ -99,17 +99,19 @@
 		var a=local.agent;
 		return '<div class="ds-os ds-os-'+a.os_cls+'">'+a.os+'</div>'+
 			'<div class="ds-br ds-br-'+a.br_cls+'">'+a.br+'</div>'+
-			(local.webmaster?'<div class=ds-webmaster>天下第一帅的站长</div>':'');
+			(local.webmaster?'<div class=ds-webmaster>站长</div>':'');
 	}
 	function callBefore(local,args){
-		var e=args[0];
+		var e=args[0],id,myId=duoshuoQuery.myId||[];
 		if(args.length==1)	// embed.unstable.js
 			e=e.post;
 		local.agent=parseAgent(e.agent);
-		local.webmaster=e.author_id==duoshuoQuery.myId;
+		id=e.author_id;
+		if(!myId.indexOf) myId=[myId];
+		local.webmaster=myId.indexOf(id)<0?0:id;
 	}
 	function callAfter(local,args){
-		var r=local.result,a=local.agent,
+		var r=local.result,
 				i=r.indexOf('<div class="ds-comment-header">'),
 				j=r.indexOf('</div>',i),
 				func=duoshuoQuery.getUAString||getUAString;
