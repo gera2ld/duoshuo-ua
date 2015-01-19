@@ -102,7 +102,7 @@
 			(local.webmaster?'<div class=ds-webmaster>站长</div>':'');
 	}
 	function callBefore(local,args){
-		var e=args[0],id,myIds=duoshuoQuery.myIds||duoshuoQuery.myId||[];
+		var e=args[0],id,myIds=duoshuoQuery.myIds||[];
 		if(args.length==1)	// embed.unstable.js
 			e=e.post;
 		local.agent=parseAgent(e.agent);
@@ -126,11 +126,20 @@
 			callAfter.call(this,local,args);
 			return local.result;
 		}
-		DUOSHUO.jQuery('.ds-thread-ua').removeClass('ds-thread-ua').addClass('ds-thread');
 	}
-	var ondomready=duoshuoQuery.ondomready;
-	duoshuoQuery.ondomready=function(){
-		if(ondomready) ondomready();
-		init();
-	};
+	function observeProperty(item,key,callback){
+		var value=undefined;
+		if(item[key]) callback();
+		else Object.defineProperty(item,key,{
+			get:function(){return value;},
+			set:function(val){
+				value=val;
+				callback();
+			},
+			configurable:true,
+		});
+	}
+	observeProperty(window,'DUOSHUO',function(){
+		observeProperty(DUOSHUO,'templates',init);
+	});
 }();

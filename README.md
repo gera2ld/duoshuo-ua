@@ -7,7 +7,7 @@
 
 使用方法
 ---
-duoshuoQuery中可以定义`myId`和`getUAString`函数：
+duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 * myIds：是站长自己的多说数字id，可以有多个，用于区分站长的回复，并可在`getUAString`中加上不同的标记，如不定义则不会对站长回复进行区分。
 * getUAString：是对每条留言显示内容进行处理的函数，默认将加上操作系统和浏览器的显示。
 
@@ -15,28 +15,26 @@ duoshuoQuery中可以定义`myId`和`getUAString`函数：
 <html>
 <head>
 
-<!-- 第1部分：必须写在后2部分的前面 -->
-<script>var duoshuoQuery={short_name:'test',myIds:[1234567]};</script>
-
-<!-- 第2部分：加载duoshuo-ua.min.js -->
+<!-- 第1部分：在embed.js之前加载duoshuo-ua.min.js -->
 <script src=dist/duoshuo-ua.min.js></script>
 
-<!-- 第3部分：也可写成异步加载，请写在第2部分后面 -->
+<!-- 第2部分：也可写成异步加载，请写在第1部分后面 -->
+<script>var duoshuoQuery={short_name:'test',myIds:[1234567]};</script>
 <script src=http://static.duoshuo.com/embed.js></script>
 
 </head>
 <body>
 
-<!-- 第4部分：注意class是“ds-thread-ua”！ -->
-<div class="ds-thread-ua" data-thread-key="example"></div>
+<div class="ds-thread" data-thread-key="example"></div>
 
 </body>
 </html>
 ```
 
 注：
+
 1. dist/duoshuo-ua.min.js是压缩后的代码，集成了CSS，无需单独加载CSS文件，如需自定义，请使用未压缩版本。
-1. 第4部分中`class="ds-thread-ua"`，将被duoshuo-ua进行识别，确保duoshuo-ua完成初始化以后再显示评论，如果是duoshuo-ua初始化以后的动态加载则应写成`class="ds-thread"`。
+1. 此版本使用`Object.defineProperty`，仅支持IE9+。
 
 效果可参见：<http://geraldl.net/about>
 
