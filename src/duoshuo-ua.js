@@ -128,18 +128,34 @@
 		}
 	}
 	function observeProperty(item,key,callback){
+		function callbackOnce(){
+			var cb=callback;
+			if(cb) {
+				callback=null;
+				cb();
+			}
+		}
 		var value=undefined;
-		if(item[key]) callback();
+		if(item[key]) callbackOnce();
 		else Object.defineProperty(item,key,{
 			get:function(){return value;},
 			set:function(val){
 				value=val;
-				callback();
+				callbackOnce();
 			},
 			configurable:true,
 		});
 	}
-	observeProperty(window,'DUOSHUO',function(){
-		observeProperty(DUOSHUO,'templates',init);
-	});
+	function observePropertyChain(item,keys,callback){
+		function observe(){
+			observeProperty(item,key,function(){
+				item=item[key];
+				if(key=keys.shift()) observe();
+				else callback();
+			});
+		}
+		var key=keys.shift();
+		observe();
+	}
+	observePropertyChain(window,['DUOSHUO','templates','post'],init);
 }();
