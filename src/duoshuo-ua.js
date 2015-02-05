@@ -1,4 +1,5 @@
 /* 多说User-Agent插件
+ * 兼容版：兼容IE8
  * 作者：Gerald <gera2ld@163.com>
  * @require ua-parser.js
  */
@@ -33,35 +34,10 @@ function init(){
 		callAfter.call(this,local,args);
 		return local.result;
 	}
+	DUOSHUO.jQuery('.ds-thread-ua').removeClass('ds-thread-ua').addClass('ds-thread');
 }
-function observeProperty(item,key,callback){
-	function callbackOnce(){
-		var cb=callback;
-		if(cb) {
-			callback=null;
-			cb();
-		}
-	}
-	var value=undefined;
-	if(item[key]) callbackOnce();
-	else Object.defineProperty(item,key,{
-		get:function(){return value;},
-		set:function(val){
-			value=val;
-			callbackOnce();
-		},
-		configurable:true,
-	});
-}
-function observePropertyChain(item,keys,callback){
-	function observe(){
-		observeProperty(item,key,function(){
-			item=item[key];
-			if(key=keys.shift()) observe();
-			else callback();
-		});
-	}
-	var key=keys.shift();
-	observe();
-}
-observePropertyChain(window,['DUOSHUO','templates','post'],init);
+var ondomready=duoshuoQuery.ondomready;
+duoshuoQuery.ondomready=function(){
+	if(ondomready) ondomready();
+	init();
+};
