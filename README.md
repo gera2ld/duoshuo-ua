@@ -36,6 +36,9 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 1. dist/duoshuo-ua-with-css.min.js是压缩后的代码，集成了CSS，无需单独加载CSS文件，如需自定义，请使用未压缩版本。
 1. 此版本使用`Object.defineProperty`，仅支持IE9+。
 
-效果可参见：<http://geraldl.net/about>
+效果可参见：
 
-如果要求更高一点可以使用<https://github.com/faisalman/ua-parser-js>来进行UA解析。
+1. 我的网站：<http://geraldl.net/about>
+1. 在线工具：<http://www.atool.org>
+
+如果对UA解析要求更高一点可以使用<https://github.com/faisalman/ua-parser-js>。
