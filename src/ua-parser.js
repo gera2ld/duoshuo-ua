@@ -26,7 +26,8 @@ function getBrower(m){
 function parseAgent(a){
 	var rules_os=[
 		['windows',[
-			[/Windows ?([^;)]*)/i,function(m){
+			[/Windows Phone(?: OS)? ?([^; )]*)/i],
+			[/Windows ([^;)]*)/i,function(m){
 				var ver={
 					'4.90':'ME',
 					'NT3.51':'NT 3.11',
@@ -43,7 +44,9 @@ function parseAgent(a){
 				}[m[1]];
 				return 'Windows'+(ver?' '+ver:'山寨版');
 			}],
-			[/Windows Phone(?: OS)? ?([^; )]*)/i],
+			[/\bWindows\b/i,function(m){
+				return m[0]+'超级山寨版';
+			}],
 		]],
 		['mac',[
 			[/iPhone|iPod|iPad/i],
