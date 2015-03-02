@@ -71,6 +71,11 @@ function parseAgent(a){
 		['chrome',[
 			[/Chrome\/(\S+)/i,getBrower],
 		]],
+		['uc',[
+			[/UCBrowser\/(\S+)/i,function(m){
+				return 'UC '+m[1];
+			}],
+		]],
 		['safari',[
 			[/Version\/(\S+) .*?Safari\//i,function(m){
 				return 'Safari '+m[1];

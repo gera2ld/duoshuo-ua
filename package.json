@@ -12,8 +12,8 @@
     "url": "http://git.oschina.net/gerald/duoshuo-ua/issues"
   },
   "devDependencies": {
-    "gulp": "^3.8.10",
-    "gulp-concat": "^2.4.3",
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
     "gulp-css2js": "^1.0.2",
     "gulp-merge": "^0.1.0",
     "gulp-minify-css": "^0.4.4",
