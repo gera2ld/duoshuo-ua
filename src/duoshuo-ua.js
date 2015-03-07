@@ -3,9 +3,12 @@
  * @require ua-parser.js
  */
 function getUAString(local){
-	var a=local.agent;
-	return '<div class="ds-os ds-os-'+a.os_cls+'">'+a.os+'</div>'+
-		'<div class="ds-br ds-br-'+a.br_cls+'">'+a.br+'</div>'+
+	var a=local.agent,toString=function(o){
+		var s=o.name;if(o.version) s+=' '+o.version;
+		return s;
+	};
+	return '<div class="ds-os">'+toString(a.os)+'</div>'+
+		'<div class="ds-br">'+toString(a.browser)+'</div>'+
 		(local.webmaster?'<div class=ds-webmaster>站长</div>':'');
 }
 function callBefore(local,args){

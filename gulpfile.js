@@ -7,6 +7,7 @@ var
 	uglify=require('gulp-uglify'),
 	minifycss=require('gulp-minify-css'),
 	css2js=require('gulp-css2js');
+
 gulp.task('default',function(){
 	var js=
 		gulp.src(['./src/ua-parser.js','./src/duoshuo-ua.js'])
@@ -15,7 +16,7 @@ gulp.task('default',function(){
 			.pipe(uglify())
 			.pipe(rename({suffix:'.min'}))
 			.pipe(gulp.dest('./dist'));
-	merge(
+	return merge(
 		gulp.src('./src/duoshuo-ua.css')
 			.pipe(minifycss())
 			.pipe(rename({suffix:'.min'}))
