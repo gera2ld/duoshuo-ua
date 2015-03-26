@@ -1,0 +1,21 @@
+{
+  "name": "duoshuo-ua",
+  "version": "1.0.0",
+  "authors": [
+    "Gerald <gera2ld@163.com>"
+  ],
+  "description": "Plugin of duoshuo to show operating systems and browsers for duoshuo comments.",
+  "main": "dist/duoshuo-ua-with-css.min.js",
+  "keywords": [
+    "duoshuo",
+    "useragent"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src"
+  ]
+}

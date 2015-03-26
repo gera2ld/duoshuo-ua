@@ -7,6 +7,13 @@
 
 使用方法
 ---
+可以通过bower安装：
+
+``` sh
+$ npm install bower
+$ bower install duoshuo-ua
+```
+
 duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 * myIds：是站长自己的多说数字id，可以有多个，用于区分站长的回复，并可在`getUAString`中加上不同的标记，如不定义则不会对站长回复进行区分。
 * getUAString：是对每条留言显示内容进行处理的函数，默认将加上操作系统和浏览器的显示。
