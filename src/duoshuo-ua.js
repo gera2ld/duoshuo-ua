@@ -3,7 +3,7 @@
  * @require ua-parser.js
  */
 function getUAString(local){
-	var a=local.agent,toString=function(o){
+	var a=parseAgent(local.agent),toString=function(o){
 		var s=o.name;if(o.version) s+=' '+o.version;
 		return s;
 	};
@@ -15,7 +15,7 @@ function callBefore(local,args){
 	var e=args[0],id,myIds=duoshuoQuery.myIds||[];
 	if(args.length==1)	// embed.unstable.js
 		e=e.post;
-	local.agent=parseAgent(e.agent);
+	local.agent=e.agent;
 	id=e.author_id;
 	if(!myIds.indexOf) myIds=[myIds];
 	local.webmaster=myIds.indexOf(id)<0?0:id;

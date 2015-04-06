@@ -31,6 +31,8 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 <script>var duoshuoQuery={short_name:'test',myIds:[1234567]};</script>
 <script src=http://static.duoshuo.com/embed.js></script>
 
+<!-- 只需要按以上顺序加载，不一定要写在<head>中 -->
+
 </head>
 <body>
 
@@ -50,4 +52,4 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 1. 我的网站：<http://geraldl.net/about>
 1. 在线工具：<http://www.atool.org>
 
-如果对UA解析要求更高一点可以使用<https://github.com/faisalman/ua-parser-js>。
+如果对UA解析要求更高一点可以使用<https://github.com/faisalman/ua-parser-js>，参考[test/faisalman.html](test/faisalman.html)。
