@@ -12,7 +12,7 @@ gulp.task('default',function(){
 	var js=
 		gulp.src(['./src/ua-parser.js','./src/duoshuo-ua.js'])
 			.pipe(concat('duoshuo-ua.js'))
-			.pipe(wrap('(function(){\n<%=contents%>\n}());'))
+			.pipe(wrap('(function(){\n<%=contents%>\n}).call({});'))
 			.pipe(uglify())
 			.pipe(rename({suffix:'.min'}))
 			.pipe(gulp.dest('./dist'));

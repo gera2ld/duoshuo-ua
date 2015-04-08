@@ -2,13 +2,11 @@
  * 作者：Gerald <gera2ld@163.com>
  * @require ua-parser.js
  */
+var UAParser=this.UAParser;
 function getUAString(local){
-	var a=parseAgent(local.agent),toString=function(o){
-		var s=o.name;if(o.version) s+=' '+o.version;
-		return s;
-	};
-	return '<div class="ds-os">'+toString(a.os)+'</div>'+
-		'<div class="ds-br">'+toString(a.browser)+'</div>'+
+	var a=UAParser.parse(local.agent);
+	return '<div class="ds-os">'+UAParser.getString(a.os)+'</div>'+
+		'<div class="ds-br">'+UAParser.getString(a.browser)+'</div>'+
 		(local.webmaster?'<div class=ds-webmaster>站长</div>':'');
 }
 function callBefore(local,args){
