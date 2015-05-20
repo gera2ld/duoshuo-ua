@@ -40,6 +40,7 @@ function init() {
 		callAfter.call(this, local, args);
 		return local.result;
 	}
+	DUOSHUO.UAParser = UAParser;
 }
 
 function observeProperty(item, key, callback) {

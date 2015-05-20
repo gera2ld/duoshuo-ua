@@ -1,15 +1,15 @@
 {
   "name": "duoshuo-ua",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "title": "Duoshuo UA Plugin",
   "description": "Plugin of duoshuo to show operating systems and browsers for duoshuo comments.",
   "author": "Gerald <gera2ld@163.com>",
   "repository": {
     "type": "git",
-    "url": "git@git.oschina.net:gerald/duoshuo-ua.git"
+    "url": "git@github.com:gera2ld/duoshuo-ua.git"
   },
   "bugs": {
-    "url": "http://git.oschina.net/gerald/duoshuo-ua/issues"
+    "url": "https://github.com/gera2ld/duoshuo-ua/issues"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
