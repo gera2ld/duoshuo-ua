@@ -52,7 +52,7 @@
 			[/(Android) ?([^; )]*)/i,
 				[NAME, VERSION, [CLASS, 'android']]],
 			// Linux
-			[/(Linux)/i,
+			[/(Ubuntu|Linux)/i,
 				[NAME, [CLASS, 'linux']]],
 			[/()/i,
 				[[NAME, '山寨操作系统'], [CLASS, 'other']]],
@@ -63,14 +63,9 @@
 				[NAME, VERSION]],
 			[[/(OPR)\/(\S+)/i, /(Presto)\/.*?Version\/(\S+)/i],
 				[[NAME, 'Opera'], VERSION]],
-			[[
-				// Maxthon
-				/(Maxthon)\/(\S+)/i,
-				// Vivaldi
-				/(Vivaldi)\/(\S+)/i,
-				// Chrome
-				/(Chrome)\/(\S+)/i,
-			], [NAME, VERSION]],
+			// Chromium based browsers
+			[/(Maxthon|Vivaldi|Chrome)\/(\S+)/i,
+				[NAME, VERSION]],
 			// UC/QQ
 			[/(UC|QQ)Browser\/(\S+)/i,
 				[[NAME, mapper.reg, [/$/, '浏览器']], VERSION]],

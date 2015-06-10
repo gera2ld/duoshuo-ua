@@ -12,7 +12,6 @@
 可以通过bower安装：
 
 ``` sh
-$ npm install bower
 $ bower install duoshuo-ua
 ```
 
@@ -54,15 +53,10 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 </html>
 ```
 
-注：
-
-1. `dist/duoshuo-ua-with-css.min.js`是压缩后的代码，集成了CSS，无需单独加载CSS文件，也可使用`dist/duoshuo-ua.min.js`和`dist/duoshuo-ua.min.css`或自定义的样式。
-1. 此分支使用`Object.defineProperty`，仅支持IE9+，如需支持IE8-可参考Compatible分支。
-1. 默认的UA解析比较简单，如有较高要求，可使用<https://github.com/faisalman/ua-parser-js>，参考[examples/faisalman.html](examples/faisalman.html)。
-
+更高级的例子见examples。[点此](http://gerald.top/code/duoshuo-ua)查看更多说明。
 
 案例
 ---
 
-1. 我的网站：<http://gerald.top/code/duoshuo-ua>
+1. 我的网站：<http://gerald.top>
 1. 在线工具：<http://www.atool.org>
