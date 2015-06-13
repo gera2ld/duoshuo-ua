@@ -26,8 +26,8 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
   参数local是一个object，包括以下属性：
   * agent: *string*  
     本条回复的UserAgent字符串。
-  * webmaster: *boolean*  
-    是否为站长回复。
+  * webmaster: *int*  
+    如果本条回复是站长回复，则为本回复中站长的id，否则为0。
 
 下面是一个简单的例子：
 ``` HTML
