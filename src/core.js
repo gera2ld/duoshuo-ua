@@ -29,7 +29,7 @@ function callAfter(local, args) {
 	var i = res.indexOf('<div class="ds-comment-header">');
 	var j = res.indexOf('</div>', i);
 	var func = duoshuoQuery.getUAString || _this.getUAString || emptyString;
-	local.result = res.slice(0, j) + func(local) + res.slice(j);
+	local.result = res.slice(0, j) + func.call(_this, local) + res.slice(j);
 }
 
 function init() {
