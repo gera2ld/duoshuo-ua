@@ -1,12 +1,12 @@
 {
   "name": "duoshuo-ua",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "authors": [
     "Gerald <gera2ld@163.com>"
   ],
   "description": "Plugin of duoshuo to show operating systems and browsers for duoshuo comments.",
   "main": [
-	  "dist/duoshuo-ua.min.js",
+	  "dist/duoshuo-ua-parser.min.js",
 	  "dist/duoshuo-ua.min.css"
   ],
   "keywords": [

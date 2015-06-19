@@ -26,7 +26,20 @@
 		},
 	};
 	</script>
-	<script src="../dist/duoshuo-ua-with-css.min.js"></script>
+	<!-- 选用不集成ua-parser的版本 -->
+	<script src="../dist/duoshuo-ua-core.min.js"></script>
+	<!-- 自定义样式 -->
+	<style>
+		#ds-reset .ds-os,
+		#ds-reset .ds-br,
+		#ds-reset .ds-webmaster {
+			display: inline-block;
+			border-radius: .3em;
+			margin-left: .5em;
+			padding: .3em;
+			border: 1px solid gray;
+		}
+	</style>
 	<script src="http://static.duoshuo.com/embed.js"></script>
 </head>
 <body>

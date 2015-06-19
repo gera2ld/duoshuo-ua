@@ -2,6 +2,7 @@
 * User-Agent parser
 * @author Gerald <gera2ld@163.com>
 */
+
 !function (window, undefined) {
 	var mapper = {
 		reg: function (str, maps) {

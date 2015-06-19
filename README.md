@@ -15,6 +15,15 @@
 $ bower install duoshuo-ua
 ```
 
+dist中各文件的说明：
+
+1. **duoshuo-ua-core.min.js**是不集成ua-parser和CSS精简版，便于自行扩展。
+1. **duoshuo-ua-parser.min.js**集成轻量级的ua-parser，但是不集成CSS。
+1. **duoshuo-ua-parser-css.min.js**集成轻量级的ua-parser和CSS，提供默认的显示方案。
+1. **duoshuo-ua.min.css**为默认的样式文件。
+
+默认将使用**duoshuo-ua-parser.min.js**和**duoshuo-ua.min.css**。
+
 文档
 ---
 duoshuoQuery中可以定义`myIds`和`getUAString`函数：
@@ -36,7 +45,7 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 
 <!-- 第1部分：在embed.js之前定义duoshuoQuery和加载duoshuo-ua
 两者顺序可以交换-->
-<script src="dist/duoshuo-ua-with-css.min.js"></script>
+<script src="dist/duoshuo-ua-parser-css.min.js"></script>
 <script>var duoshuoQuery={short_name:'test',myIds:[1234567]};</script>
 
 <!-- 第2部分：可写成异步加载，必须写在第1部分后面 -->
@@ -53,7 +62,9 @@ duoshuoQuery中可以定义`myIds`和`getUAString`函数：
 </html>
 ```
 
-更高级的例子见examples。[点此](http://gerald.top/code/duoshuo-ua)查看更多说明。
+更高级的例子见examples。
+
+更多介绍：<http://gerald.top/code/duoshuo-ua>
 
 案例
 ---

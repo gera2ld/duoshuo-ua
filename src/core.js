@@ -1,14 +1,16 @@
-/* 多说User-Agent插件
- * 作者：Gerald <gera2ld@163.com>
- * @require ua-parser.js
+/**
+ * 多说User-Agent插件核心脚本
+ * 用于监听DUOSHUO及评论加载过程并执行注入
+ *
+ * @author Gerald <gera2ld@163.com>
+ *
+ * Optional requirements:
+ *   ./default.js
  */
-var UAParser = this.UAParser;
 
-function getUAString(local) {
-	var agent = UAParser.parse(local.agent);
-	return '<div class="ds-os">' + UAParser.getString(agent.os) + '</div>' +
-		'<div class="ds-br">' + UAParser.getString(agent.browser) + '</div>' +
-		(local.webmaster ? '<div class=ds-webmaster>站长</div>' : '');
+var _this = this;
+function emptyString(local) {
+	return '';
 }
 
 function callBefore(local, args) {
@@ -26,7 +28,7 @@ function callAfter(local, args) {
 	var res = local.result;
 	var i = res.indexOf('<div class="ds-comment-header">');
 	var j = res.indexOf('</div>', i);
-	var func = duoshuoQuery.getUAString || getUAString;
+	var func = duoshuoQuery.getUAString || _this.getUAString || emptyString;
 	local.result = res.slice(0, j) + func(local) + res.slice(j);
 }
 
@@ -40,7 +42,6 @@ function init() {
 		callAfter.call(this, local, args);
 		return local.result;
 	}
-	DUOSHUO.UAParser = UAParser;
 }
 
 function observeProperty(item, key, callback) {
