@@ -13,15 +13,26 @@ function emptyString(local) {
 	return '';
 }
 
+var myIds;
 function callBefore(local, args) {
-	var myIds = duoshuoQuery.myIds || [];
+  if (!myIds) {
+    myIds = duoshuoQuery.myIds || [];
+    if (!myIds.slice) myIds = [myIds];
+    myIds.reverse();
+  }
+
 	var e = args[0];
 	if (args.length == 1)	// embed.unstable.js
 		e = e.post;
+
 	local.agent = e.agent;
+  local.webmaster = 0;
 	var id = e.author_id;
-	if (!myIds.pop) myIds = [myIds];
-	local.webmaster = myIds.indexOf(id) < 0 ? 0 : id;
+  for (var i = myIds.length; i--; )
+    if (myIds[i] == id) {
+      local.webmaster = id;
+      break;
+    }
 }
 
 function callAfter(local, args) {

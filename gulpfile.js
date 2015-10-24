@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var wrap = require('gulp-wrap');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
-var merge = require('gulp-merge');
+var merge2 = require('merge2');
 var uglify = require('gulp-uglify');
 var minifycss = require('gulp-minify-css');
 var css2js = require('gulp-css2js');
@@ -66,7 +66,7 @@ gulp.task('build-css', function () {
 });
 
 gulp.task('build-with-ua-parser-css', ['build-with-ua-parser', 'build-css'], function () {
-	return merge(embed_js, embed_css.pipe(css2js()))
+	return merge2(embed_js, embed_css.pipe(css2js()))
 		.pipe(concat('duoshuo-ua-parser-css.js'))
 		.pipe(uglify())
 		.pipe(header(banner, {
@@ -78,4 +78,6 @@ gulp.task('build-with-ua-parser-css', ['build-with-ua-parser', 'build-css'], fun
 		.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', ['build-core', 'build-with-ua-parser-css']);
+gulp.task('build', ['build-core', 'build-with-ua-parser-css']);
+
+gulp.task('default', ['build']);

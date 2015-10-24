@@ -1,6 +1,6 @@
 {
   "name": "duoshuo-ua",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "title": "Duoshuo UA Plugin",
   "description": "Plugin of duoshuo to show operating systems and browsers for duoshuo comments.",
   "author": "Gerald <gera2ld@163.com>",
@@ -13,16 +13,16 @@
     "url": "https://github.com/gera2ld/duoshuo-ua/issues"
   },
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-clone": "^1.0.0",
-    "gulp-concat": "^2.5.2",
+    "gulp-concat": "^2.6.0",
     "gulp-css2js": "^1.0.2",
-    "gulp-header": "^1.2.2",
-    "gulp-merge": "^0.1.0",
-    "gulp-minify-css": "^0.4.4",
+    "gulp-header": "^1.7.1",
+    "gulp-minify-css": "^1.2.1",
     "gulp-order": "^1.1.1",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.1.0",
-    "gulp-wrap": "^0.10.1"
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.4.2",
+    "gulp-wrap": "^0.11.0",
+    "merge2": "^0.3.6"
   }
 }
