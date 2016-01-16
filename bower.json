@@ -6,8 +6,8 @@
   ],
   "description": "Plugin of duoshuo to show operating systems and browsers for duoshuo comments.",
   "main": [
-	  "dist/duoshuo-ua-parser.min.js",
-	  "dist/duoshuo-ua.min.css"
+	  "dist/duoshuo-ua.js",
+	  "dist/duoshuo-ua.css"
   ],
   "keywords": [
     "duoshuo",
